@@ -9,8 +9,8 @@ Claude Code uses `CLAUDE.md` files as persistent context. They are loaded into t
 | Folder | Source location on this machine | Intended active location | Purpose |
 | --- | --- | --- | --- |
 | `global/` | `~/.claude/CLAUDE.md` | `~/.claude/CLAUDE.md` | Personal defaults loaded for all Claude Code sessions for this user. Use for Australian English, preferred tone, workflow expectations, security posture, and collaboration preferences that apply across projects. |
-| `workspace/` | `/Users/maddog/Documents/Claudius/CLAUDE.md` | A shared parent folder, for example `/Users/maddog/Documents/Claudius/CLAUDE.md` | Workspace-level guidance loaded when Claude is started inside that folder tree. Use for conventions that apply across a group of related repositories or work areas. |
-| `project example/` | `/Users/maddog/Documents/Claudius/Code Projects/Security/CLAUDE.md` | The root of a repository, for example `./CLAUDE.md` or `./.claude/CLAUDE.md` | Project-specific instructions that should travel with the repository. Use for architecture notes, common commands, coding standards, testing expectations, and project-specific security or operational constraints. |
+| `workspace/` | `/%username%/%workspacepath%/CLAUDE.md` | A shared parent folder, for example `/%username%/%workspacepath%/CLAUDE.md` | Workspace-level guidance loaded when Claude is started inside that folder tree. Use for conventions that apply across a group of related repositories or work areas. |
+| `project example/` | `/%username%/%workspacepath%/%projectpath%/CLAUDE.md` | The root of a repository, for example `./CLAUDE.md` or `./.claude/CLAUDE.md` | Project-specific instructions that should travel with the repository. Use for architecture notes, common commands, coding standards, testing expectations, and project-specific security or operational constraints. |
 
 ## How Claude Loads These Files
 
@@ -28,15 +28,15 @@ More specific files are read later in the context, so project-level guidance can
 For example, when starting Claude Code in:
 
 ```text
-/Users/maddog/Documents/Claudius/Code Projects/Security
+/%username%/%workspacepath%/%projectpath%
 ```
 
 Claude may use:
 
 ```text
 ~/.claude/CLAUDE.md
-/Users/maddog/Documents/Claudius/CLAUDE.md
-/Users/maddog/Documents/Claudius/Code Projects/Security/CLAUDE.md
+/%username%/%workspacepath%/CLAUDE.md
+/%username%/%workspacepath%/%projectpath%/CLAUDE.md
 ```
 
 ## What Belongs Where
